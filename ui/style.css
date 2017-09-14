@@ -33,6 +33,6 @@ body {
 
 img .img-medium {
   
-    text-align: left;
+    text-align: left !important;
     
 }

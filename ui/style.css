@@ -24,6 +24,9 @@ body {
 .bold {
     font-weight: bold;
 }
+.right{
+    text-align:center;
+}
 
 .img-medium {
     height: 200px;

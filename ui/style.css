@@ -27,12 +27,7 @@ body {
 
 .img-medium {
     height: 200px;
-    text-align: left;
-    
+   
 }
 
-img .img-medium {
-  
-    text-align: left !important;
-    
-}
+

@@ -13,6 +13,9 @@ body {
     text-align: center;
     color:white;
 }
+.center img{
+    text-align:right;
+}
 
 .text-big {
     font-size: 300%;

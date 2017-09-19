@@ -1,12 +1,11 @@
 body {
     font-family: sans-serif;
     margin-top: 75px;
-     background-color: lightgrey;
     background-image: url("https://s3.amazonaws.com/codecademy-content/courses/web-101/unit-6/htmlcss1-img_tahoe.jpeg");
-  background-size: cover;
-  background-position: bottom center;
-  height: 500px;
-  width: 100%;
+    background-size: cover;
+    background-position: bottom center;
+    height: 500px;
+    width: 100%;
 }
 
 .center {
@@ -38,7 +37,6 @@ body {
     color: #4b4b4b;
     padding-left: 20px;
     font-family: sans-serif;
-    padding-top: 33px;
     padding-right: 41px;
 }
     

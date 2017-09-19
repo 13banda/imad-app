@@ -4,7 +4,9 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
-var articleOne={
+
+var articles={
+    articleOne:{
         title: 'article One | About',
         heading:'Article-one',
         date:'spt 19',
@@ -23,6 +25,23 @@ var articleOne={
                             this is content of article one.                this is content of article one.
                             this is content of article one.                this is content of article one.
                         </p>`
+        },
+    articleTwo:{
+        title: 'article two | About',
+        heading:'Article-two',
+        date:'spt 19',
+        content:`<p>
+                this is content of article two.
+              </p>`
+        },
+    articlethree:{
+        title: 'article three | About',
+        heading:'Article-three',
+        date:'spt 19',
+        content:`<p>
+                            this is content of article one.
+                </p>`
+        }
 };
 function createTemplate(data){
     var title=data.title;
@@ -60,16 +79,11 @@ function createTemplate(data){
         </html>`;
     return htmlTemplate;
 }
-app.get('/article-one',function(req,res){
-    res.send(createTemplate(articleOne));
-});
-
-app.get('/article-two',function(req,res){
-    res.sendfile(path.join(__dirname,'ui','article-two.html'));
-});
-
-app.get('/article-three',function(req,res){
-   res.sendfile(path.join(__dirname,'ui','article-three.html'));
+app.get('/:articleName',function(req,res){
+    //this is the functionality of express framework
+    // when we use colums then it is like a parameter 
+    var articleName=req.params.articleName;
+    res.send(createTemplate(articles[articleName]));
 });
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));

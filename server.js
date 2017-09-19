@@ -7,7 +7,7 @@ app.use(morgan('combined'));
 
 
 app.get('/article-one',function(req,res){
-    res.send("this is article one is servered");
+    res.sendfile(path.join(__dirname,'ui','article-one.html'));
 });
 
 app.get('/article-two',function(req,res){

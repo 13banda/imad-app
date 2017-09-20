@@ -4,7 +4,7 @@ var element=document.getElementById("main-text");
 element.innerHTML='new values';
 
 var img=document.getElementById('madi');
-imag.onclick=function(){
+ima.onclick=function(){
     img.style.moveLeft='100px';
 }
 

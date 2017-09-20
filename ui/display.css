@@ -1,6 +1,9 @@
 
 div{
     border:2px dotted black;
+    border: 3px dashed rgb(88, 59, 59);
+    border-radius: 3px;
     text-align:center;
-    margin:auto auto;
+    margin: 100px;
+    padding: 192px 247px;
 }

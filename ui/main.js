@@ -4,8 +4,14 @@ var element=document.getElementById("main-text");
 element.innerHTML='new values';
 
 var img=document.getElementById('madi');
+var marginLeft=0;
+function moverleft(){
+    marginLeft=marginLeft+1;
+    img.style.marginRight=marginLeft+'px';
+}
 img.onclick=function(){
-    img.style.marginRight='100px';
+    var inertval=setInterval(moveleft,50);
+    
 }
 
 

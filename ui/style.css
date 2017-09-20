@@ -3,13 +3,13 @@ body {
     margin-top: 75px;
     background-image: url("https://s3.amazonaws.com/codecademy-content/courses/web-101/unit-6/htmlcss1-img_tahoe.jpeg");
     background-size: cover;
-    background-position: bottom center;
+   background-position: bottom center;
     height: 500px;
     width: 100%;
 }
 
 .center {
-    text-align: right;
+    text-align:center;
     color:white;
 }
 
@@ -30,7 +30,7 @@ body {
     height: 100px;
     margin-right:10px;
     margin-top:10px;
-   
+  
 }
 .container{
     margin: 0 auto;

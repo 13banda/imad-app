@@ -1,2 +1,4 @@
 console.log('Loaded!');
-alert('ki hal ne');
+// change the main text
+var element=document.getElementById("main-text");
+element.innerHTML='new values';

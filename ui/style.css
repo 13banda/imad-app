@@ -1,7 +1,9 @@
 body {
     font-family: sans-serif;
-    margin-top: 75px;
-   
+    left: 0;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
    
 }
 .bg{

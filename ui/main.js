@@ -19,8 +19,9 @@ var i=0;
 var counter=document.getElementById('counter');
 var count=document.getElementById('count');
 counter.onclick=function(){
-count.innerHTML=''+i;
 i++;
+count.innerHTML=''+i;
+
 };
 
 

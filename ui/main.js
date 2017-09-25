@@ -15,13 +15,21 @@ img.onclick=function(){
 }
 
 */
-var i=0;
-var counter=document.getElementById('counter');
-var count=document.getElementById('count');
-counter.onclick=function(){
-i++;
-count.innerHTML=''+i;
-
+var btn=document.getElementById('counter');
+btn.onclick=function(){
+// make a request to server
+    var request=new XMLHttpRequest();
+    request.onreadystatechange=function(){
+        if(request.readyState===XMLHttpRequest.DONE){
+            //take some action
+            if(request.STATUS===200){
+                var counter=request.responseText;
+                var span=document.getElementById('count');
+                span.innerHTML=counter;
+            }
+        }
+    };
+    // MAke the Request
+    request.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/counter',true);
+    request.send(null);
 };
-
-

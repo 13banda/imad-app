@@ -39,6 +39,7 @@ body {
   
 }
 .container{
+    width:800px;
     margin: 0 auto;
     color: #4b4b4b;
     padding-left: 20px;

@@ -25,7 +25,7 @@ btn.onclick=function(){
             if(request.status===200){
                 var counter=request.responseText;
                 var span=document.getElementById('count');
-                span.innerHTML=counter.toSting();
+                span.innerHTML=counter.toString();
             }
         }
     };

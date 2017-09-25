@@ -1,5 +1,5 @@
 console.log('Loaded!');
-// change the main text
+/*// change the main text
 var element=document.getElementById("main-text");
 element.innerHTML='new values';
 
@@ -13,5 +13,14 @@ img.onclick=function(){
     var inertval=setInterval(moveleft,50);
     
 }
+
+*/
+var i=0;
+var counter=getElementById('counter');
+var count=getElementById('count');
+counter.onclick=function(){
+count.innerHTML=''+i;
+i++;
+};
 
 

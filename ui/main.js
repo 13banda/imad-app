@@ -16,8 +16,8 @@ img.onclick=function(){
 
 */
 var i=0;
-var counter=getElementById('counter');
-var count=getElementById('count');
+var counter=document.getElementById('counter');
+var count=document.getElementById('count');
 counter.onclick=function(){
 count.innerHTML=''+i;
 i++;

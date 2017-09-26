@@ -41,7 +41,7 @@ submit_btn.onclick=function(){
     //render the result to list
     var names=['name','name'];
     var list='';
-   list+='<li>'+nameInput.value+'</li>';
+    names.push(nameInput.value);
     for(var i=0;i<names.length;i++){
         list+='<li>'+names[i]+'</li>';
     }

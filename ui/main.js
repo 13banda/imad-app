@@ -38,15 +38,27 @@ var nameInput=document.getElementById('name');
 var submit_btn=document.getElementById('submit-btn');
 submit_btn.onclick=function(){
     // make the request to the server and get the name list object
-    //render the result to list
-    var names=['name','name'];
-    var list='';
-    names.push(nameInput.value);
-    for(var i=0;i<names.length;i++){
-        list+='<li>'+names[i]+'</li>';
-    }
-    var ul=document.getElementById('nameList');
-    ul.innerHTML=list;
+        var request=new XMLHttpRequest();
+            request.onreadystatechange=function(){
+                if(request.readyState===XMLHttpRequest.DONE){
+                    //take some action
+                    if(request.status===200){
+                        var names=request.responsetext;
+                        names=JSON.parse(names);
+                        var list='';
+                        names.push(nameInput.value);
+                        for(var i=0;i<names.length;i++){
+                            list+='<li>'+names[i]+'</li>';
+                        }
+                        var ul=document.getElementById('nameList');
+                        ul.innerHTML=list;
+                    }
+                }
+            };
+            // MAke the Request
+            request.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/submit-name?name='+nameInput.value,true);
+            request.send(null);
+   
 };
 
 

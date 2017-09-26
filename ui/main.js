@@ -34,14 +34,14 @@ btn.onclick=function(){
 };
 
 
-var nameBox=document.getElementById('name');
+var nameInput=document.getElementById('name');
 var submit_btn=document.getElementById('submit-btn');
 submit_btn.onclick=function(){
     // make the request to the server and get the name list object
     //render the result to list
     var names=['name','name'];
     var list='';
-   list+='<li>'+nameBox.value()+'</li>';
+   list+='<li>'+nameInput.value+'</li>';
     for(var i=0;i<names.length;i++){
         list+='<li>'+names[i]+'</li>';
     }

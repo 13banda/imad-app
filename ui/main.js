@@ -42,7 +42,7 @@ submit_btn.onclick=function(){
     var names=['name','name'];
     var listItems='';
     var list=document.getElementById('nameList');
-    for(var i=0;i>names.length;i++){
+    for(var i=0;i<names.length;i++){
         listItems+='<li>'+names[i]+'</li>';
     }
     list.innerHTML=listItems;

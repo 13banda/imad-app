@@ -35,7 +35,7 @@ btn.onclick=function(){
 
 
 
-var submit_btn=document.getElementById('submit_btn');
+var submit_btn=document.getElementById('submit-btn');
 submit_btn.onclick=function(){
     // make the request to the server and get the name list object
     //render the result to list

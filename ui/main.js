@@ -34,18 +34,19 @@ btn.onclick=function(){
 };
 
 
-
+var nameBox=document.getElementById('name');
 var submit_btn=document.getElementById('submit-btn');
 submit_btn.onclick=function(){
     // make the request to the server and get the name list object
     //render the result to list
     var names=['name','name'];
-    var listItems='';
-    var list=document.getElementById('nameList');
+    var list='';
+   list+='<li>'+nameBox.value()+'</li>';
     for(var i=0;i<names.length;i++){
-        listItems+='<li>'+names[i]+'</li>';
+        list+='<li>'+names[i]+'</li>';
     }
-    list.innerHTML=listItems;
+    var ul=document.getElementById('nameList');
+    ul.innerHTML=list;
 };
 
 

@@ -109,6 +109,8 @@ app.post('/login',function(req,res){
                 var hashedPassword=hash(password,salt);
                 if(hashedPassword===dbstring){
                     res.send('crenditial are correct :'+username);    
+                } else{
+                    res.status(403).send('password is incorrect');
                 }
             }
                 

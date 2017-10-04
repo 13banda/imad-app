@@ -59,4 +59,31 @@ submit_btn.onclick=function(){
             request.send(null);
    
 };
+
+
+var loginSubmit_btn=document.getElementById('login-submit-btn');
+loginSubmit_btn.onclick=function(){
+    // make the request to the server and get the name list object
+        var request=new XMLHttpRequest();
+            request.onreadystatechange=function(){
+                if(request.readyState===XMLHttpRequest.DONE){
+                    //take some action
+                    if(request.status===200){
+                     alert(userName+' have sucessfully loged');
+                    }
+                    else if(request.status===403){
+                        alert('username/password is invalid');
+                    }
+                    else{
+                        alert('something went wrong!');
+                    }
+                }
+            };
+
+                        // MAke the Request
+            var userName=document.getElementById('username').value;
+            var password=document.getElementById('password').value;
+            request.open('POST','http://wwaheguru9509088985.imad.hasura-app.io/login',true);
+            request.send(JSON.stringify({username:userName,password:password}));
+};
    

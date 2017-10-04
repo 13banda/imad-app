@@ -1,15 +1,16 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
-//var Pool = require('pg').Pool;
+var Pool = require('pg').Pool;
 
-/*var config ={
+var config ={
     user:'wwaheguru9509088985',
     database:'wwaheguru9509088985',
     host:'db.imad.hasura-app.io',
     port:'5432',
     password:process.evn.DB_PASSWORD
-};*/
+};
+
 var app = express();
 app.use(morgan('combined'));
 
@@ -94,7 +95,7 @@ app.get('/counter',function(req,res){
 });
 
 
-//var pool = new Pool(config);
+var pool = new Pool(config);
 app.get('/test-db',function(req,res){
     //make the request to db
     pool.query('SELECT * FROM tag',function(err,result){

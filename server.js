@@ -66,7 +66,7 @@ function hash(input,salt){
 }
 app.get('/hash/:value',function(req,res){
    
-   var hashString =hash(req.params.value);
+   var hashString =hash(req.params.value,"This-is the-salt-String");
    res.send(hashString);    
 });
 

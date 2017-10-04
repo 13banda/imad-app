@@ -95,7 +95,7 @@ app.get('/counter',function(req,res){
 });
 
 
-var pool = new Pool(config);
+//var pool = new Pool(config);
 app.get('/test-db',function(req,res){
     //make the request to db
     pool.query('SELECT * FROM tag',function(err,result){

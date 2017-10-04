@@ -2,7 +2,13 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var Pool = require('pg').Pool;
-
+var config ={
+    user:'wwaheguru9509088985',
+    database:'wwaheguru9509088985',
+    host:'db.imad.hasura-app.io',
+    port:'5432',
+    password:process.env.DB_PASSWORD
+};
 var app = express();
 app.use(morgan('combined'));
 
@@ -86,13 +92,7 @@ app.get('/counter',function(req,res){
     res.send(counter+'');
 });
 
-var config ={
-    user:'wwaheguru9509088985',
-    database:'wwaheguru9509088985',
-    host:'db.imad.hasura-app.io',
-    port:'5432',
-    password:process.env.DB_PASSWORD
-};
+
 var pool = new Pool(config);
 app.get('/test-db',function(req,res){
     //make the request to db
@@ -115,11 +115,25 @@ app.get('/submit-name',function(req,res){//url something /submit-name?name=xxxx;
     res.send(JSON.stringify(names));
 });
 
-app.get('/:articleName',function(req,res){
+app.get('/articles/:articleName',function(req,res){
     //this is the functionality of express framework
     // when we use colums then it is like a parameter 
-    var articleName=req.params.articleName;
-    res.send(createTemplate(articles[articleName]));
+    pool.query("SELECT * FROM article WHERE title='"+req.params.articleName+",;",function(err,result){
+        if(err){
+            res.status(500).send(err.toString());
+        }
+        else{
+            
+            if(result.rows.lenght===0){
+                res.status(404).send('Articles not found');
+            }
+            else{
+                var articleData=result.rows[0];
+                res.send(createTemplate(articleData));
+            }
+        }
+    });
+    
 });
 
 app.get('/', function (req, res) {

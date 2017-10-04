@@ -72,7 +72,7 @@ app.get('/hash/:value',function(req,res){
    res.send(hashString);    
 });
 
-app.post('create-user',function(req,res){
+app.post('/create-user',function(req,res){
     //username passowrd
     //JSON
     var username=req.body.username;

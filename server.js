@@ -84,12 +84,37 @@ app.post('/create-user',function(req,res){
             res.status(500).send(err.toString());
         }
         else{
-            
                 res.send('user is sucessfully created :'+username);
         }
     });
     
     
+});
+
+app.post('/login',function(req,res){
+   var username=req.body.username;
+    var password=req.body.password;
+    pool.query('SELECT * FROM "users" WHERE username=$1',[username],function(err,result){
+        if(err){
+            res.status(500).send(err.toString());
+        }
+        else{
+            if(result.rows.length===0){
+                res.status(403).send('user not found');
+            }
+            else{
+                // match the password
+                var dbString=result.rows[0].password;
+                var salt=dbString.split('$')[2];
+                var hashedPassword=hash(password,salt);
+                if(hashedPassword===dbstring){
+                    res.send('crenditial are correct :'+username);    
+                }
+            }
+                
+        }
+    });
+     
 });
 
 app.get('/test-db',function(req,res){

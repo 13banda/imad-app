@@ -62,7 +62,7 @@ function hash(input,salt){
     //let do make hash
    //pbkd password based key derviation
     var hashed = crypto.pbkdf2Sync(input, salt, 100000, 512, 'sha512');
-    return hashed.toString('hex');
+    return ['pbkdf2',10000,salthashed.toString('hex')].join('$');
 }
 app.get('/hash/:value',function(req,res){
    

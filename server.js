@@ -87,7 +87,7 @@ app.get('/articles/:articleName',function(req,res){
         }
         else{
             
-            if(result.rows.lenght===0){
+            if(result.rows.length===0){
                 res.status(404).send("Articles not found");
             }
             else{

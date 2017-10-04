@@ -96,7 +96,7 @@ var config ={
 var pool = new Pool(config);
 app.get('/test-db',function(req,res){
     //make the request to db
-    pool.query('SELECT * FROM tag',function(err,result){
+    pool.query('SELECT * FROM tags',function(err,result){
         if(err){
             res.status(500).send(err.toString());
         }

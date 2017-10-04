@@ -118,7 +118,7 @@ app.get('/submit-name',function(req,res){//url something /submit-name?name=xxxx;
 app.get('/articles/:articleName',function(req,res){
     //this is the functionality of express framework
     // when we use colums then it is like a parameter 
-    pool.query("SELECT * FROM article WHERE title='"+req.params.articleName+",;",function(err,result){
+    pool.query("SELECT * FROM article WHERE title='"+req.params.articleName+"';",function(err,result){
         if(err){
             res.status(500).send(err.toString());
         }

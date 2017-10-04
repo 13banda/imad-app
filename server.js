@@ -2,6 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var Pool = require('pg').Pool;
+
 var config ={
     user:'wwaheguru9509088985',
     database:'wwaheguru9509088985',
@@ -9,47 +10,11 @@ var config ={
     port:'5432',
     password:process.env.DB_PASSWORD
 };
+
 var app = express();
 app.use(morgan('combined'));
+var pool = new Pool(config);
 
-var articles={
-    'article-one':{
-        title: 'article One | About',
-        heading:'Article-one',
-        date:'spt 19',
-        content:`<p>
-                            this is content of article one.                this is content of article one.
-                            this is content of article one.                this is content of article one.
-                            this is content of article one.                this is content of article one.
-                        </p>
-                        <p>
-                            this is content of article one.                this is content of article one.
-                            this is content of article one.                this is content of article one.
-                            this is content of article one.                this is content of article one.
-                        </p>
-                        <p>
-                            this is content of article one.                this is content of article one.
-                            this is content of article one.                this is content of article one.
-                            this is content of article one.                this is content of article one.
-                        </p>`
-        },
-    'article-two':{
-        title: 'article two | About',
-        heading:'Article-two',
-        date:'spt 19',
-        content:`<p>
-                this is content of article two.
-              </p>`
-        },
-    'article-three':{
-        title: 'article three | About',
-        heading:'Article-three',
-        date:'spt 19',
-        content:`<p>
-                            this is content of article one.
-                </p>`
-        }
-};
 function createTemplate(data){
     var title=data.title;
     var heading=data.heading;
@@ -92,8 +57,6 @@ app.get('/counter',function(req,res){
     res.send(counter+'');
 });
 
-
-var pool = new Pool(config);
 app.get('/test-db',function(req,res){
     //make the request to db
     pool.query('SELECT * FROM tags',function(err,result){
@@ -118,7 +81,7 @@ app.get('/submit-name',function(req,res){//url something /submit-name?name=xxxx;
 app.get('/articles/:articleName',function(req,res){
     //this is the functionality of express framework
     // when we use colums then it is like a parameter 
-    pool.query("SELECT * FROM articles WHERE title='"+req.params.articleName+"';",function(err,result){
+    pool.query("SELECT * FROM articles WHERE title= $1",[req.params.articleName],function(err,result){
         if(err){
             res.status(500).send(err.toString());
         }

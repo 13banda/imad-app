@@ -135,6 +135,10 @@ app.get('/check-login',function(req,res){
         res.send('you are not logged in');
     }
 });
+app.get('/logout',function(req,res){
+    delete req.session.auth;
+        res.send('you are loged in : '+req.session.auth.userId.toString());
+});
 
 app.get('/test-db',function(req,res){
     //make the request to db
@@ -149,6 +153,7 @@ app.get('/test-db',function(req,res){
     //respond with result
     
 });
+
 
 var names=[];
 app.get('/submit-name',function(req,res){//url something /submit-name?name=xxxx;

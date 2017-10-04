@@ -91,7 +91,7 @@ var config ={
     database:'wwaheguru9509088985',
     host:'db.imad.hasura-app.io',
     port:'5432',
-    password:process.evn.DB_PASSWORD
+    password:process.env.DB_PASSWORD
 };
 var pool = new Pool(config);
 app.get('/test-db',function(req,res){

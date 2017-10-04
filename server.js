@@ -113,6 +113,10 @@ app.post('/login',function(req,res){
                 var salt=dbString.split('$')[2];
                 var hashedPassword=hash(password,salt);
                 if(hashedPassword===dbString){
+                    
+                    // set session 
+                    req.session.auth={userId:result.rows[0].id};
+                    
                     res.send('crenditial are correct :'+username);    
                 } else{
                     res.status(403).send('password is incorrect');
@@ -122,6 +126,14 @@ app.post('/login',function(req,res){
         }
     });
      
+});
+
+app.get('/check-login',function(req,res){
+    if(req.session && req.sesion.auth &&req.session.auth.userId){
+        res.send('you are loged in : '+req.session.auth.userId.toString());
+    }else{
+        res.send('you are not logged in');
+    }
 });
 
 app.get('/test-db',function(req,res){

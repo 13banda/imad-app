@@ -115,7 +115,7 @@ app.post('/login',function(req,res){
                 if(hashedPassword===dbString){
                     
                     // set session 
-                    req.session.outh={userId:result.rows[0].id};
+                    req.session.auth={userId: result.rows[0].id};
                     
                     res.send('crenditial are correct :'+username);    
                 } else{
@@ -129,8 +129,8 @@ app.post('/login',function(req,res){
 });
 
 app.get('/check-login',function(req,res){
-    if(req.session && req.sesion.outh && req.session.outh.userId){
-        res.send('you are loged in : '+req.session.outh.userId.toString());
+    if(req.session && req.sesion.auth && req.session.auth.userId){
+        res.send('you are loged in : '+req.session.auth.userId.toString());
     }else{
         res.send('you are not logged in');
     }

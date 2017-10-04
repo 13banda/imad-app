@@ -137,7 +137,7 @@ app.get('/check-login',function(req,res){
 });
 app.get('/logout',function(req,res){
     delete req.session.auth;
-        res.send('you are loged in : '+req.session.auth.userId.toString());
+        res.send('you are logout');
 });
 
 app.get('/test-db',function(req,res){

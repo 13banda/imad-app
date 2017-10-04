@@ -2,6 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var Pool = require('pg').Pool;
+var crypto = require('crypto');
 
 var config ={
     user:'wwaheguru9509088985',
@@ -55,6 +56,18 @@ var counter=0;
 app.get('/counter',function(req,res){
     counter=counter+1;
     res.send(counter+'');
+});
+
+function hash(input,salt){
+    //let do make hash
+   //pbkd password based key derviation
+    var hashed = crypto.pbkdf2Sync(input, salt, 100000, 512, 'sha512');
+    return hashed;
+}
+app.get('/has/:value',function(req,res){
+   
+   var hashString =hash(req.params.value);
+   res.send(hashString);    
 });
 
 app.get('/test-db',function(req,res){

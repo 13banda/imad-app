@@ -84,6 +84,7 @@ loginSubmit_btn.onclick=function(){
             var userName=document.getElementById('username').value;
             var password=document.getElementById('password').value;
             request.open('POST','http://wwaheguru9509088985.imad.hasura-app.io/login',true);
+            request.setRequestHeader('Content-Type','application/json');
             request.send(JSON.stringify({username:userName,password:password}));
 };
    

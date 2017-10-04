@@ -59,24 +59,4 @@ submit_btn.onclick=function(){
             request.send(null);
    
 };
-    var request=new XMLHttpRequest();
-            request.onreadystatechange=function(){
-                if(request.readyState===XMLHttpRequest.DONE){
-                    //take some action
-                    if(request.status===200){
-                        var names=request.responseText;
-                        names=JSON.parse(names);
-                        var list='';
-                        for(var i=names.length-1;i>=0;i--){
-                            list+='<li>'+names[i]+'</li>';
-                        }
-                        var ul=document.getElementById('nameList');
-                        ul.innerHTML=list;
-                    }
-                }
-            };
-            // MAke the Request
-            request.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/submit-name?name='+nameInput.value,true);
-            request.send(null);
-
-
+   

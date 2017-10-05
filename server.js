@@ -198,9 +198,11 @@ app.get('/ui/style.css', function (req, res) {
 app.get('/ui/display.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'display.css'));
 });
+
 app.get('/ui/display', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'Display.html'));
 });
+
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });

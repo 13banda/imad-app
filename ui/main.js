@@ -124,4 +124,31 @@ newUser_btn.onclick= function (){
             newUser_btn.value='Registering';
 };
 
+
+       var request=new XMLHttpRequest();
+            request.onreadystatechange=function(){
+                if(request.readyState===XMLHttpRequest.DONE){
+                    //take some action
+                    if(request.status===200){
+                        // babnner set logout banner
+                        var username=request.responseText;
+                        if(username.toString().length>2){
+                        username=JSON.parse(username);
+                        var loginPanel=document.getElementById('login-panel');
+                        loginPanel.innerHTML="<a href='/logout' >logout</a> "+userName;
+                        }
+                    }
+                    else{
+                        alert('something went wrong!');
+                        newUser_btn.value='Register';
+                        
+                    }
+                }
+            };
+
+            // MAke the Request
+            request.open('POST','http://wwaheguru9509088985.imad.hasura-app.io/check-login',true);
+            request.send(null);
+        
+
    

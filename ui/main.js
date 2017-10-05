@@ -135,7 +135,7 @@ newUser_btn.onclick= function (){
                         if(username.toString().length>2){
                         username=JSON.parse(username);
                         var loginPanel=document.getElementById('login-panel');
-                        loginPanel.innerHTML="<a href='/logout' >logout</a> "+userName;
+                        loginPanel.innerHTML="<a href='/logout' >logout</a> "+userName[0];
                         }
                     }
                     

@@ -60,9 +60,7 @@ submit_btn.onclick=function(){
    
 };
 
-
-var loginSubmit_btn=document.getElementById('login-submit-btn');
-loginSubmit_btn.onclick=function(){
+function login(){
     // make the request to the server and get the name list object
         var request=new XMLHttpRequest();
             request.onreadystatechange=function(){
@@ -72,7 +70,8 @@ loginSubmit_btn.onclick=function(){
                         // babnner set logout banner
                         var loginPanel=document.getElementById('login-panel');
                         loginPanel.innerHTML="<input id='logout-submit-btn' type='submit' value='logout'>";
-                        logout_btn=document.getElementById('logout-submit-btn');
+                       var logout_btn=document.getElementById('logout-submit-btn');
+                            logout_btn.onclick=logout();
                      alert(userName+' have sucessfully loged');
                     }
                     else if(request.status===403){
@@ -90,10 +89,8 @@ loginSubmit_btn.onclick=function(){
             request.open('POST','http://wwaheguru9509088985.imad.hasura-app.io/login',true);
             request.setRequestHeader('Content-Type','application/json');
             request.send(JSON.stringify({username:userName,password:password}));
-};
-
-var logout_btn=document.getElementById('logout-submit-btn');
-logout_btn.onclick=function(){
+}
+function logout(){
     // make the request to the server and get the name list object
         var request=new XMLHttpRequest();
             request.onreadystatechange=function(){
@@ -108,6 +105,7 @@ logout_btn.onclick=function(){
                                             <br>
                                             <input id='login-submit-btn' type='submit' value='login'>`;
                        loginSubmit_btn=document.getElementById('login-submit-btn');
+                       loginSubmit_btn.onclick=login();
                         }
                         
                     else{
@@ -119,5 +117,9 @@ logout_btn.onclick=function(){
             request.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/logout',true);
             request.send(null);
    
-};
+}
+var loginSubmit_btn=document.getElementById('login-submit-btn');
+loginSubmit_btn.onclick=login();
+
+
    

@@ -72,6 +72,7 @@ loginSubmit_btn.onclick=function(){
                         // babnner set logout banner
                         var loginPanel=document.getElementById('login-panel');
                         loginPanel.innerHTML="<input id='logout-submit-btn' type='submit' value='logout'>";
+                        logout_btn=document.getElementById('logout-submit-btn');
                      alert(userName+' have sucessfully loged');
                     }
                     else if(request.status===403){
@@ -106,7 +107,9 @@ logout_btn.onclick=function(){
                                             <input id='password' type='password' placeholder='Enter your password'>
                                             <br>
                                             <input id='login-submit-btn' type='submit' value='login'>`;
+                       loginSubmit_btn=document.getElementById('login-submit-btn');
                         }
+                        
                     else{
                         alert('something went wrong!');
                     }

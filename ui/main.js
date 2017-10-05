@@ -14,6 +14,9 @@ img.onclick=function(){
     
 }
 */
+function lll(){
+    alert('you have been haved');
+}
 var btn=document.getElementById('counter');
 btn.onclick=function(){
 // make a request to server

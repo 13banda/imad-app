@@ -104,6 +104,8 @@ newUser_btn.onclick= function (){
                         // babnner set logout banner
                         
                      alert(userName+' have sucessfully Registred');
+                    newUser_btn.value='Registred';
+                        
                     }
                     else{
                         alert('something went wrong!');
@@ -117,6 +119,7 @@ newUser_btn.onclick= function (){
             request.open('POST','http://wwaheguru9509088985.imad.hasura-app.io/create-user',true);
             request.setRequestHeader('Content-Type','application/json');
             request.send(JSON.stringify({username:userName,password:password}));
+            newUser_btn.value='Registering';
 };
 
    

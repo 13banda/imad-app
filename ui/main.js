@@ -105,8 +105,8 @@ function logout(){
                                             <input id='password' type='password' placeholder='Enter your password'>
                                             <br>
                                             <input id='login-submit-btn' type='submit' value='login'>`;
-                      // loginSubmit_btn=document.getElementById('login-submit-btn');
-                      // loginSubmit_btn.onclick=function(){login();};
+                         loginSubmit_btn=document.getElementById('login-submit-btn');
+                         loginSubmit_btn.onclick=function(){login();};
                         }
                         
                     else{

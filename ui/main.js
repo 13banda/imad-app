@@ -14,9 +14,7 @@ img.onclick=function(){
     
 }
 */
-function lll(){
-    alert('you have been haved');
-}
+
 var btn=document.getElementById('counter');
 btn.onclick=function(){
 // make a request to server
@@ -74,7 +72,7 @@ function login(){
                         var loginPanel=document.getElementById('login-panel');
                         loginPanel.innerHTML="<input id='logout-submit-btn' type='submit' value='logout'>";
                        var logout_btn=document.getElementById('logout-submit-btn');
-                            logout_btn.onclick=logout();
+                        logout_btn.onclick=function(){logout();};
                      alert(userName+' have sucessfully loged');
                     }
                     else if(request.status===403){
@@ -107,8 +105,8 @@ function logout(){
                                             <input id='password' type='password' placeholder='Enter your password'>
                                             <br>
                                             <input id='login-submit-btn' type='submit' value='login'>`;
-                       loginSubmit_btn=document.getElementById('login-submit-btn');
-                       loginSubmit_btn.onclick=login();
+                      // loginSubmit_btn=document.getElementById('login-submit-btn');
+                      // loginSubmit_btn.onclick=function(){login();};
                         }
                         
                     else{
@@ -122,7 +120,9 @@ function logout(){
    
 }
 var loginSubmit_btn=document.getElementById('login-submit-btn');
-loginSubmit_btn.onclick=login();
+loginSubmit_btn.onclick= () =>{
+    login();
+  };
 
 
    

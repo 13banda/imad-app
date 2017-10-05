@@ -61,7 +61,10 @@ submit_btn.onclick=function(){
    
 };
 
-function login(){
+
+
+var loginSubmit_btn=document.getElementById('login-submit-btn');
+loginSubmit_btn.onclick= function login(){
     // make the request to the server and get the name list object
         var request=new XMLHttpRequest();
             request.onreadystatechange=function(){
@@ -70,9 +73,7 @@ function login(){
                     if(request.status===200){
                         // babnner set logout banner
                         var loginPanel=document.getElementById('login-panel');
-                        loginPanel.innerHTML="<input id='logout-submit-btn' type='submit' value='logout'>";
-                       var logout_btn=document.getElementById('logout-submit-btn');
-                        logout_btn.onclick=function(){logout();};
+                        loginPanel.innerHTML="<a href='http://wwaheguru9509088985.imad.hasura-app.io/logout' >logout</a>";
                      alert(userName+' have sucessfully loged');
                     }
                     else if(request.status===403){
@@ -90,39 +91,7 @@ function login(){
             request.open('POST','http://wwaheguru9509088985.imad.hasura-app.io/login',true);
             request.setRequestHeader('Content-Type','application/json');
             request.send(JSON.stringify({username:userName,password:password}));
-}
-function logout(){
-    // make the request to the server and get the name list object
-        var request=new XMLHttpRequest();
-            request.onreadystatechange=function(){
-                if(request.readyState===XMLHttpRequest.DONE){
-                    //take some action
-                    if(request.status===200){
-                        var loginPanel=document.getElementById('login-panel');
-                        loginPanel.innerHTML=`<p>Login to get awsome features</p>
-                                            <input id='username' type='text' placeholder='User Name'>
-                                            <br>
-                                            <input id='password' type='password' placeholder='Enter your password'>
-                                            <br>
-                                            <input id='login-submit-btn' type='submit' value='login'>`;
-                         loginSubmit_btn=document.getElementById('login-submit-btn');
-                         loginSubmit_btn.onclick=function(){login();};
-                        }
-                        
-                    else{
-                        alert('something went wrong!');
-                    }
-                }
-            };
-            // MAke the Request
-            request.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/logout',true);
-            request.send(null);
-   
-}
-var loginSubmit_btn=document.getElementById('login-submit-btn');
-loginSubmit_btn.onclick= () =>{
-    login();
-  };
+};
 
 
    

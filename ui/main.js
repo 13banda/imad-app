@@ -69,6 +69,9 @@ loginSubmit_btn.onclick=function(){
                 if(request.readyState===XMLHttpRequest.DONE){
                     //take some action
                     if(request.status===200){
+                        // babnner set logout banner
+                        var loginPanel=document.getElementById('login-panel');
+                        loginPanel.innerHTML="<input id='logout-submit-btn' type='submit' value='logout'>";
                      alert(userName+' have sucessfully loged');
                     }
                     else if(request.status===403){

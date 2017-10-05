@@ -147,7 +147,7 @@ newUser_btn.onclick= function (){
             };
 
             // MAke the Request
-            request.open('POST','http://wwaheguru9509088985.imad.hasura-app.io/check-login',true);
+            request.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/check-login',true);
             request.send(null);
         
 

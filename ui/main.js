@@ -109,6 +109,8 @@ newUser_btn.onclick= function (){
                     }
                     else{
                         alert('something went wrong!');
+                        newUser_btn.value='Register';
+                        
                     }
                 }
             };

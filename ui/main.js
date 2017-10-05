@@ -73,7 +73,7 @@ loginSubmit_btn.onclick= function (){
                     if(request.status===200){
                         // babnner set logout banner
                         var loginPanel=document.getElementById('login-panel');
-                        loginPanel.innerHTML="<a href='http://wwaheguru9509088985.imad.hasura-app.io/logout' >logout</a>";
+                        loginPanel.innerHTML="<a href='/logout' >logout</a> userName";
                      alert(userName+' have sucessfully loged');
                     }
                     else if(request.status===403){

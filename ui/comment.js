@@ -10,10 +10,10 @@ request.onreadystatechange=function(){
            
             comments=JSON.parse(comments);
              console.log(comments);
-              console.log(comments.username);
+              console.log(comments[0].username);
             var commentBody="";
             for(let i=0;i<comments.length;i++){
-                commentBody+="<h4></h4>"+comments.username+"<h5> at "+comments.timestemp+" </h5>"+comments.comment+"<hr>";
+                commentBody+="<h4></h4>"+comments[i].username+"<h5> at "+comments[i].timestemp+" </h5>"+comments[i].comment+"<hr>";
             }
             commentPanel.innerHTML=""+commentBody;
         }else{

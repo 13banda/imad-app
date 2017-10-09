@@ -151,9 +151,11 @@ app.get('/logout',function(req,res){
         res.send("you are logout<br><a href='/'>home</a>");
 });
 
-app.get('/test-db',function(req,res){
+app.get('/comments',function(req,res){
     //make the request to db
-    pool.query('SELECT * FROM tags',function(err,result){
+    pool.query(`SELECT "users".username,comment".timestemp,"comment".comments 
+                FROM "comment","users" 
+                WHERE "comment".article_id=$1 AND "comment".user_id="users".id`,[req.query.article_id],function(err,result){
         if(err){
             res.status(500).send(err.toString());
         }
@@ -162,8 +164,7 @@ app.get('/test-db',function(req,res){
         }
     });
     //respond with result
-    
-});
+  });
 
 
 var names=[];
@@ -194,10 +195,10 @@ app.get('/articles/:articleName',function(req,res){
     
 });
 
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
@@ -213,6 +214,7 @@ app.get('/ui/display', function (req, res) {
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
+
 app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });

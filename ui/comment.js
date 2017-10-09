@@ -7,6 +7,7 @@ request.onreadystatechange=function(){
         //take some action
         if(request.status===200){
             var comments=request.responseText;
+            console.log(comments);
             comments=JSON.parse(comments);
             var commentBody="";
             for(let i=0;i<comments.length;i++){

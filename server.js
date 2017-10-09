@@ -58,10 +58,11 @@ function createTemplate(data){
                         <h2>Comments</h2>
                        <hr>
                        <div id='comment_panel'>
-                        <script type="text/javascript" src="/ui/comments.js">
+                        
                        </div>
                     </div>
                 </div>
+                <script type="text/javascript" src="/ui/comment.js">
             </body>
         </html>`;
     return htmlTemplate;

@@ -6,8 +6,8 @@ request.onreadystatechange=function(){
     if(request.readyState===XMLHttpRequest.DONE){
         //take some action
         if(request.status===200){
-            var commentsText=request.responseText;
-            var comments=JSON.parse(commentsText);
+            var comments=request.responseText;
+            comments=JSON.parse(comments);
             var commentBody="";
             for(let i=0;i<comments.length;i++){
                 commentBody+="<h4></h4>"+comments.username+"<h5> at "+comments.timestemp+" </h5>"+comments.comment+"<hr>";

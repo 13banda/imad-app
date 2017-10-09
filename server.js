@@ -58,7 +58,7 @@ function createTemplate(data){
                         <h2>Comments</h2>
                        <hr>
                        <div id='comment_panel'>
-                        
+                        comments are loadding...
                        </div>
                     </div>
                 </div>

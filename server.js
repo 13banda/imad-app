@@ -53,6 +53,13 @@ function createTemplate(data){
                     <div>
                         ${content}
                     </div>
+                    <div>
+                      <hr>
+                        <h2>Comments</h2>
+                       <hr>
+                       <div id='comment_panel'>
+                       </div>
+                    </div>
                 </div>
             </body>
         </html>`;

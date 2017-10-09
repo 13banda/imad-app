@@ -153,7 +153,7 @@ app.get('/logout',function(req,res){
 
 app.get('/comments',function(req,res){
     //make the request to db
-    pool.query(`SELECT "users".username,comment".timestemp,"comment".comments 
+    pool.query(`SELECT "users".username,comment".timestemp,"comment".comment 
                 FROM "comment","users" 
                 WHERE "comment".article_id=$1 AND "comment".user_id="users".id`,[req.query.article_id],function(err,result){
         if(err){

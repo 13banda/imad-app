@@ -7,8 +7,10 @@ request.onreadystatechange=function(){
         //take some action
         if(request.status===200){
             var comments=request.responseText;
-            console.log(comments);
+           
             comments=JSON.parse(comments);
+             console.log(comments);
+              console.log(comments.username);
             var commentBody="";
             for(let i=0;i<comments.length;i++){
                 commentBody+="<h4></h4>"+comments.username+"<h5> at "+comments.timestemp+" </h5>"+comments.comment+"<hr>";

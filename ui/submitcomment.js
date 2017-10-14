@@ -1,5 +1,5 @@
 
-var Submit_btn=document.getElementById('submit-commment-btn');
+var Submit_btn=document.getElementById('submit_commment_btn');
 Submit_btn.onclick= function (){
     // make the request to the server and get the name list object
         var request=new XMLHttpRequest();
@@ -26,7 +26,7 @@ Submit_btn.onclick= function (){
             };
 
                         // MAke the Request
-            var commentText=document.getElementById('comment-area').value;
+            var commentText=document.getElementById('comment_area').value;
             
             request.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/submit-comment?article_id=1&comment='+commentText,true);
           request.send(null);

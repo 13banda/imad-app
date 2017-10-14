@@ -33,7 +33,6 @@ request_1.onreadystatechange=function(){
         //take some action
         if(request_1.status===200){
             var commentPanel=request_1.responseText;
-           
             newcommentPanel.innerHTML=""+commentPanel;
         }else{
             newcommentPanel.innerHTML="";

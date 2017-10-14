@@ -189,7 +189,7 @@ app.get('/submit-name',function(req,res){//url something /submit-name?name=xxxx;
     names.push(name);
     res.send(JSON.stringify(names));
 });
-app.get('/submit-coment',function(req,res){//url something /submit-name?name=xxxx;
+app.get('/submit-comment',function(req,res){//url something /submit-name?name=xxxx;
     var article_id=req.query.article_id;
     var commentText=req.query.comment;
    pool.query("INSERT INTO comments (article_id, user_id, comment, timestemp) VALUES ($1, '12',$2, now());",[article_id,commentText],function(err,result){

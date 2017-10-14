@@ -200,12 +200,12 @@ app.get('/submit-comment',function(req,res){//url something /submit-name?name=xx
             
             pool.query(`SELECT "users".username,"comments".timestemp,"comments".comment 
                             FROM "comments","users" 
-                            WHERE "comments".article_id=$1 AND "comments".user_id="users".id`,[req.query.article_id],function(err,result){
+                            WHERE "comments".article_id=$1 AND "comments".user_id="users".id`,[req.query.article_id],function(err,results){
                     if(err){
                         res.status(500).send(err.toString());
                     }
                     else{
-                        res.send(JSON.stringify(result.rows));
+                        res.send(JSON.stringify(results.rows));
                     }
                 });
         }

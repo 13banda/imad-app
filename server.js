@@ -176,6 +176,7 @@ app.get('/comments',function(req,res){
             res.status(500).send(err.toString());
         }
         else{
+            console.log(results);
             res.send(JSON.stringify(result.rows));
         }
     });

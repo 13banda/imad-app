@@ -34,6 +34,9 @@ request_1.onreadystatechange=function(){
         if(request_1.status===200){
             var commentPanel=request_1.responseText;
             newcommentPanel.innerHTML=""+commentPanel;
+            // MAke the Request
+                request_2.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/ui/submitcommment.js',true);
+                request_2.send(null);
         }else{
             newcommentPanel.innerHTML="";
         }
@@ -43,5 +46,15 @@ request_1.onreadystatechange=function(){
 request_1.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/add-new-comment-panel',true);
 request_1.send(null);
 
+// make the request for submit request
+var request_2=new XMLHttpRequest();
+request_2.onreadystatechange=function(){
+    if(request_2.readyState===XMLHttpRequest.DONE){
+        //take some action
+        if(request_2.status===200){
+         
+        }
+    }
+};
 
 

@@ -47,6 +47,8 @@ request_1.onreadystatechange=function(){
         }
     }
 };
-
+// MAke the Request
+request_1.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/add-new-comment-panel',true);
+request_1.send(null);
 
 

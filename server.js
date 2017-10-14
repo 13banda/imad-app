@@ -188,6 +188,29 @@ app.get('/submit-name',function(req,res){//url something /submit-name?name=xxxx;
     names.push(name);
     res.send(JSON.stringify(names));
 });
+app.get('/submit-coment',function(req,res){//url something /submit-name?name=xxxx;
+    var article_id=req.query.article_id;
+    var commentText=req.query.comment;
+   pool.query("INSERT INTO comments (article_id, user_id, comment, timestemp) VALUES ($1, '12',$2, now());",[article_id,commentText],function(err,result){
+        if(err){
+            res.status(500).send(err.toString());
+        }
+        else{
+            
+            pool.query(`SELECT "users".username,"comments".timestemp,"comments".comment 
+                            FROM "comments","users" 
+                            WHERE "comments".article_id=$1 AND "comments".user_id="users".id`,[req.query.article_id],function(err,result){
+                    if(err){
+                        res.status(500).send(err.toString());
+                    }
+                    else{
+                        res.send(JSON.stringify(result.rows));
+                    }
+                });
+        }
+    });
+    res.send(JSON.stringify(names));
+});
 
 app.get('/articles/:articleName',function(req,res){
     //this is the functionality of express framework
@@ -235,6 +258,9 @@ app.get('/ui/main.js', function (req, res) {
 });
 app.get('/ui/comment.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'comment.js'));
+});
+app.get('/ui/submitcomment.js', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'submitcomment.js'));
 });
 // Do not change port, otherwise your app won't run on IMAD servers
 // Use 8080 only for local development if you already have apache running on 80

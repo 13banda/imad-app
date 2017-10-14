@@ -35,7 +35,7 @@ request_1.onreadystatechange=function(){
             var commentPanel=request_1.responseText;
             newcommentPanel.innerHTML=""+commentPanel;
             // MAke the Request
-                request_2.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/ui/submitcommment.js',true);
+                request_2.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/ui/submitcomment.js',true);
                 request_2.send(null);
         }else{
             newcommentPanel.innerHTML="";

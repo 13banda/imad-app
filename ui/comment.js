@@ -25,3 +25,24 @@ request.onreadystatechange=function(){
 commentPanel.innerHTML="comments are loadings...";
 request.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/comments?article_id=1',true);
 request.send(null);
+
+var request_1=new XMLHttpRequest();
+var newcommentPanel=document.getElementById("add_comment");
+request_1.onreadystatechange=function(){
+    if(request_1.readyState===XMLHttpRequest.DONE){
+        //take some action
+        if(request_1.status===200){
+            var commentPanel=request_1.responseText;
+           
+            newcommentPanel.innerHTML=""+commentPanel;
+        }else{
+            newcommentPanel.innerHTML="";
+        }
+    }
+};
+// MAke the Request
+request_1.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/add-new-comment-panel',true);
+request_1.send(null);
+
+
+

@@ -212,7 +212,7 @@ app.get('/submit-comment',function(req,res){//url something /submit-name?name=xx
                 });
         }
     });
-    res.send(JSON.stringify(names));
+  
 });
 
 app.get('/articles/:articleName',function(req,res){

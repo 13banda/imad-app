@@ -26,7 +26,7 @@ Submit_btn.onclick= function (){
             };
 
                         // MAke the Request
-            var commentText=document.getElementById('comment_area').value;
+            var commentText=document.getElementById('comment_Area').value;
             
             request.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/submit-comment?article_id=1&comment='+commentText,true);
           request.send(null);

@@ -161,7 +161,7 @@ app.get('/add-new-comment-panel',function(req,res){
         res.send(`submit a comment 
      <br><textarea id="comment_Area" placeholder="add a comment here..." style="margin: 0px; height: 98px; width: 191px;"></textarea>
     <br><input id="submit_comment_btn" type="submit" value="submit">
-    <script type="text/javascript" src="/ui/submitComment.js"></script>`);
+    <script type="text/javascript" src="/ui/submitcomment.js"></script>`);
     }else{
         res.status(404).send(null);
     }

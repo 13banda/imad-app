@@ -1,5 +1,5 @@
 
-var Submit_btn=document.getElementById('submit_commment_btn');
+var Submit_btn=document.getElementById('submit_comment_btn');
 Submit_btn.onclick= function (){
     // make the request to the server and get the name list object
         var request=new XMLHttpRequest();

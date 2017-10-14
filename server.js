@@ -56,6 +56,8 @@ function createTemplate(data){
                     <div>
                       <hr>
                         <h2>Comments</h2>
+                        <div id='add_comment'>
+                        </div>
                        <hr>
                        <div id='comment_panel'>
                         comments are loadding...
@@ -153,6 +155,17 @@ app.get('/logout',function(req,res){
         res.send("you are logout<br><a href='/'>home</a>");
 });
 
+
+app.get('/add-new-comment-panel',function(req,res){
+    if(req.session && req.session.auth && req.session.auth.userId){
+        res.send(`submit a comment 
+     <br><textarea id="comment_Area" placeholder="add a comment here..." style="margin: 0px; height: 98px; width: 191px;"></textarea>
+    <br><input id="submit_comment_btn" type="submit" value="submit">
+    <script type="text/javascript" src="/ui/submitComment.js"></script>`);
+    }else{
+        res.status(404).send(null);
+    }
+});
 app.get('/comments',function(req,res){
     //make the request to db
     pool.query(`SELECT "users".username,"comments".timestemp,"comments".comment 

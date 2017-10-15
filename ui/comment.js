@@ -34,14 +34,14 @@ request_1.onreadystatechange=function(){
         if(request_1.status===200){
             var commentPanel=request_1.responseText;
             newcommentPanel.innerHTML=""+commentPanel;
-            newcommentPanel.appendChild('<script type="text/javascript" src="/ui/submitcomment.js"></script>');
-   /*         var jsElm = document.createElement("script");
-    // set the type attribute
-    jsElm.type = "application/javascript";
-    // make the script element load file
-    jsElm.src = '/ui/submitcomment.js';
-    // finally insert the element to the body element in order to load the script
-    document.body.appendChild(jsElm);*/
+            
+            var jsElm = document.createElement("script");
+            // set the type attribute
+            jsElm.type = "application/javascript";
+            // make the script element load file
+            jsElm.src = '/ui/submitcomment.js';
+            // finally insert the element to the body element in order to load the script
+            newcommentPanel.appendChild(jsElm);
         }else{
             newcommentPanel.innerHTML="";
         }

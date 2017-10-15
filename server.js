@@ -69,11 +69,6 @@ function createTemplate(data){
         </html>`;
     return htmlTemplate;
 }
-var counter=0;
-app.get('/counter',function(req,res){
-    counter=counter+1;
-    res.send(counter+'');
-});
 
 function hash(input,salt){
     //let do make hash
@@ -158,10 +153,9 @@ app.get('/logout',function(req,res){
 
 app.get('/add-new-comment-panel',function(req,res){
     if(req.session && req.session.auth && req.session.auth.userId){
-        res.send(`submit a comment 
-     <br><textarea id="comment_Area" placeholder="add a comment here..." ></textarea>
-    <br><input id="submit_comment_btn" type="submit" value="submit">
-    `);
+    res.send(`submit a comment 
+       <br><textarea id="comment_Area" placeholder="add a comment here..." ></textarea>
+       <br><input id="submit_comment_btn" type="submit" value="submit">`);
    // res.sendFile(path.join(__dirname, 'ui', 'submitcomment.js'));
     }else{
         res.status(404).send(null);
@@ -193,7 +187,7 @@ app.get('/submit-name',function(req,res){//url something /submit-name?name=xxxx;
 app.get('/submit-comment',function(req,res){//url something /submit-name?name=xxxx;
     var article_id=req.query.article_id;
     var commentText=req.query.comment;
-   pool.query("INSERT INTO comments (article_id, user_id, comment, timestemp) VALUES ($1, '12',$2, now());",[article_id,commentText],function(err,result){
+   pool.query("INSERT INTO comments (article_id, user_id, comment, timestemp) VALUES ($1,$2,$3, now());",[article_id,req.session.auth.userId,commentText],function(err,result){
         if(err){
             res.status(500).send(err.toString());
         }

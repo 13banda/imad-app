@@ -34,7 +34,7 @@ request_1.onreadystatechange=function(){
         if(request_1.status===200){
             var commentPanel=request_1.responseText;
             newcommentPanel.innerHTML=""+commentPanel;
-            
+            newcommentPanel.appendChild('<script type="text/javascript" src="/ui/submitcomment.js"></script>');
    /*         var jsElm = document.createElement("script");
     // set the type attribute
     jsElm.type = "application/javascript";

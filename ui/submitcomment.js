@@ -1,6 +1,6 @@
 
 var Submit_btn=document.getElementById('submit_comment_btn');
-var commentText=document.getElementById('comment_Area').value;
+var commentText=document.getElementById('comment_Area');
 Submit_btn.onclick= function (){
     // make the request to the server and get the name list object
         var request=new XMLHttpRequest();
@@ -24,9 +24,9 @@ Submit_btn.onclick= function (){
                         alert('something went wrong!');
                     }
                 }
-            };
+};
 
 // Make the Request
-request.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/submit-comment?article_id=1&comment='+commentText,true);
+request.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/submit-comment?article_id=1&comment='+commentText.value,true);
 request.send(null);
 };

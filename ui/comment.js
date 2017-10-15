@@ -35,13 +35,13 @@ request_1.onreadystatechange=function(){
             var commentPanel=request_1.responseText;
             newcommentPanel.innerHTML=""+commentPanel;
             
-            var jsElm = document.createElement("script");
+   /*         var jsElm = document.createElement("script");
     // set the type attribute
     jsElm.type = "application/javascript";
     // make the script element load file
     jsElm.src = '/ui/submitcomment.js';
     // finally insert the element to the body element in order to load the script
-    document.body.appendChild(jsElm);
+    document.body.appendChild(jsElm);*/
         }else{
             newcommentPanel.innerHTML="";
         }

@@ -27,6 +27,9 @@ Submit_btn.onclick= function (){
 };
 
 // Make the Request
-request.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/submit-comment?article_id=1&comment='+commentText.value,true);
+// get the article name from /articles/article-one
+var path=window.location.pathname.split('/');
+var articleName=path[2];
+request.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/submit-comment?article_id='+articleName+'&comment='+commentText.value,true);
 request.send(null);
 };

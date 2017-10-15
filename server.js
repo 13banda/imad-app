@@ -140,7 +140,8 @@ app.post('/login',function(req,res){
 
 app.get('/check-login',function(req,res){
     if(req.session && req.session.auth && req.session.auth.userId){
-        res.send(JSON.stringify([req.session.auth.userId.toString()]));
+       req.send(req.session.auth.userId.toString());
+       // res.send(JSON.stringify([req.session.auth.userId.toString()]));
     }else{
         res.send(null);
     }

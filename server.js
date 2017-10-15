@@ -159,7 +159,7 @@ app.get('/logout',function(req,res){
 app.get('/add-new-comment-panel',function(req,res){
     if(req.session && req.session.auth && req.session.auth.userId){
         res.send(`submit a comment 
-     <br><textarea id="comment_Area" placeholder="add a comment here..." style="margin: 0px; height: 98px; width: 191px;"></textarea>
+     <br><textarea id="comment_Area" placeholder="add a comment here..." ></textarea>
     <br><input id="submit_comment_btn" type="submit" value="submit">
     `);
    // res.sendFile(path.join(__dirname, 'ui', 'submitcomment.js'));

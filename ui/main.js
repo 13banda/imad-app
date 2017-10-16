@@ -133,9 +133,8 @@ newUser_btn.onclick= function (){
                         // babnner set logout banner
                         var username=request.responseText;
                         if(username!==null){
-                        username=JSON.parse(username);
                         var loginPanel=document.getElementById('login-panel');
-                        loginPanel.innerHTML="<a href='/logout' >logout</a> "+username[0];
+                        loginPanel.innerHTML="<a href='/logout' >logout</a> "+username;
                         }
                     }
                     

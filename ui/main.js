@@ -125,25 +125,25 @@ newUser_btn.onclick= function (){
 };
 
 
-       var request=new XMLHttpRequest();
-            request.onreadystatechange=function(){
-                if(request.readyState===XMLHttpRequest.DONE){
-                    //take some action
-                    if(request.status===200){
-                        // babnner set logout banner
-                        var username=request.responseText;
-                        if(username.length>2){
-                        var loginPanel=document.getElementById('login-panel');
-                        loginPanel.innerHTML="<a href='/logout' >logout</a> "+username;
-                        }
-                    }
-                    
-                }
-            };
+var request=new XMLHttpRequest();
+request.onreadystatechange=function(){
+    if(request.readyState===XMLHttpRequest.DONE){
+        //take some action
+        if(request.status===200){
+            // babnner set logout banner
+            var username=request.responseText;
+            if(username.length>2){
+            var loginPanel=document.getElementById('login-panel');
+            loginPanel.innerHTML="<a href='/logout' >logout</a> "+username;
+            }
+        }
+        
+    }
+};
 
-            // MAke the Request
-            request.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/check-login',true);
-            request.send(null);
+// MAke the Request
+request.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/check-login',true);
+request.send(null);
         
 
    

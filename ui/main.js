@@ -132,7 +132,7 @@ newUser_btn.onclick= function (){
                     if(request.status===200){
                         // babnner set logout banner
                         var username=request.responseText;
-                        if(username>2){
+                        if(username.length>2){
                         var loginPanel=document.getElementById('login-panel');
                         loginPanel.innerHTML="<a href='/logout' >logout</a> "+username;
                         }

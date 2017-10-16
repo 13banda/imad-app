@@ -141,9 +141,23 @@ app.post('/login',function(req,res){
 
 app.get('/check-login',function(req,res){
     if(req.session && req.session.auth && req.session.auth.userId){
-      // res.send(req.session.auth.userId.toString());
-        res.send(JSON.stringify([req.session.auth.userId.toString()]));
-      
+     //  res.send(req.session.auth.userId.toString());
+      //  res.send(JSON.stringify([req.session.auth.userId.toString()]));
+    
+        pool.query('SELECT username FROM "users" WHERE id=$1',[req.session.auth.userId],function(err,result){
+        if(err){
+            res.status(500).send(err.toString());
+        }
+        else{
+            if(result.rows.length===0){
+                res.status(403).send('user not found');
+            }
+            else{
+                res.send(result.rows[0].username);
+            }
+                
+        }
+    });
     }else{
         res.send(null);
     }

@@ -1,10 +1,13 @@
+// library that we used
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
-var Pool = require('pg').Pool;
-var crypto = require('crypto');
-var bodyParser= require('body-parser');
-var session= require('express-session');
+var Pool = require('pg').Pool;// for creating the pool for db crandential
+var crypto = require('crypto');//for hashing the password
+var bodyParser= require('body-parser');// for extracting JSON from content body
+var session= require('express-session');// this the session lib.
+
+// db crandential
 var config ={
     user:'wwaheguru9509088985',
     database:'wwaheguru9509088985',
@@ -16,10 +19,12 @@ var config ={
 var app = express();
 app.use(morgan('combined'));
 app.use(bodyParser.json());
+
 app.use(session({
     secret: 'thisisthesecretrandomvalues',
     cookie: {maxAge:1000 * 60 * 60 * 24 * 30}
 }));
+
 var pool = new Pool(config);
 
 function createTemplate(data){
@@ -70,6 +75,7 @@ function createTemplate(data){
     return htmlTemplate;
 }
 
+// hasing the password
 function hash(input,salt){
     //let do make hash
    //pbkd password based key derviation
@@ -276,6 +282,7 @@ app.get('/ui/comment.js', function (req, res) {
 app.get('/ui/submitcomment.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'submitcomment.js'));
 });
+
 // Do not change port, otherwise your app won't run on IMAD servers
 // Use 8080 only for local development if you already have apache running on 80
 

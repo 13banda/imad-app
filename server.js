@@ -182,16 +182,16 @@ app.get('/comments',function(req,res){
             pool.query(`SELECT "users".username,"comments".comment,"comments".timestemp
                          FROM "comments","users","articles"
                            WHERE "comments".article_id="articles".id AND "comments".user_id="users".id AND "articles".title=$1 ORDER BY "comments".timestemp DESC`,[article_Title],function(err,result){
-                            if(err){
-                                res.status(500).send(err.toString());
-                            }
-                            else{
-                                if(result.rows.length===0){
-                                  res.send('0 commment/article not found')  
-                                }else{
-                                res.send(JSON.stringify(result.rows));
+                                if(err){
+                                    res.status(500).send(err.toString());
                                 }
-                            }
+                                else{
+                                        if(result.rows.length===0){
+                                           res.send('0 commment/article not found');  
+                                        }else{
+                                           res.send(JSON.stringify(result.rows));
+                                        }
+                                }
             }); 
     //respond with result
   });

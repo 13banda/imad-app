@@ -146,49 +146,41 @@ app.post('/login',function(req,res){
 });
 
 app.get('/check-login',function(req,res){
+    
     if(req.session && req.session.auth && req.session.auth.userId){
-     //  res.send(req.session.auth.userId.toString());
+      //  res.send(req.session.auth.userId.toString());
       //  res.send(JSON.stringify([req.session.auth.userId.toString()]));
     
-        pool.query('SELECT username FROM "users" WHERE id=$1',[req.session.auth.userId],function(err,result){
-        if(err){
-            res.status(500).send(err.toString());
-        }
-        else{
-            if(result.rows.length===0){
-                res.status(403).send('user not found');
-            }
-            else{
+      // find the username who is loged in
+       pool.query('SELECT username FROM "users" WHERE id=$1',[req.session.auth.userId],function(err,result){
+         if(err){
+             res.status(500).send(err.toString());
+          }
+         else{
+              if(result.rows.length===0){
+                  res.status(403).send('user not found');
+               }
+              else{
                 res.send(result.rows[0].username);
-            }
-                
-        }
-    });
-    }else{
-        res.send(null);
+               }
+           }    
+       });
+       
+      }else{
+        res.send('you are not logged in');
     }
 });
+
 app.get('/logout',function(req,res){
     delete req.session.auth;
-        res.send("you are logout<br><a href='/'>home</a>");
+    res.send("you are logout sucessfully...");
 });
 
-
-app.get('/add-new-comment-panel',function(req,res){
-    if(req.session && req.session.auth && req.session.auth.userId){
-    res.send(`submit a comment 
-       <br><textarea id="comment_Area" placeholder="add a comment here..." ></textarea>
-       <br><input id="submit_comment_btn" type="submit" value="submit">`);
-   // res.sendFile(path.join(__dirname, 'ui', 'submitcomment.js'));
-    }else{
-        res.status(404).send(null);
-    }
-});
 app.get('/comments',function(req,res){
     //make the request to db
-    pool.query(`SELECT "users".username,"comments".timestemp,"comments".comment 
-                FROM "comments","users" 
-                WHERE "comments".article_id=$1 AND "comments".user_id="users".id`,[req.query.article_id],function(err,result){
+    pool.query(`SELECT "users".username,"comments".comment,"comments".timestemp
+                 FROM "comments","users","articles"
+                   WHERE "comments".article_id="articles".id AND "comments".user_id="users".id AND "articles".title=$1' ORDER BY "comments".timestemp DESC;`,[req.query.article_title],function(err,result){
         if(err){
             res.status(500).send(err.toString());
         }
@@ -200,13 +192,13 @@ app.get('/comments',function(req,res){
     //respond with result
   });
 
-
 var names=[];
 app.get('/submit-name',function(req,res){//url something /submit-name?name=xxxx;
     var name=req.query.name;
     names.push(name);
     res.send(JSON.stringify(names));
 });
+
 app.get('/submit-comment',function(req,res){//url something /submit-name?name=xxxx;
     var article_Name=req.query.article;
     var commentText=req.query.comment;

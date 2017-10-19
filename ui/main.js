@@ -6,7 +6,7 @@ function loadArticles(){
             if(request.readyState===XMLHttpRequest.DONE){
                 //take some action
                 if(request.status===200){
-                    var artclesData=JSON.parse(request.responseText);
+                    var articlesData=JSON.parse(request.responseText);
                     var articles='';
                     for(let i=0;i<articleData.length;i++){
                         articles+=`<a href='/articles/${articleData[i].title}'>${articleData[i].title} (${articleData[i].date})</a>`;

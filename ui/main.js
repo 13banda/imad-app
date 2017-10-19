@@ -1,39 +1,30 @@
-console.log('Loaded!');
-/*// change the main text
-var element=document.getElementById("main-text");
-element.innerHTML='new values';
-
-var img=document.getElementById('madi');
-var marginLeft=0;
-function moveleft(){
-    marginLeft=marginLeft+1;
-    img.style.marginRight=marginLeft+'px';
-}
-img.onclick=function(){
-    var inertval=setInterval(moveleft,50);
-    
-}
-*/
-
-var btn=document.getElementById('counter');
-btn.onclick=function(){
-// make a request to server
-    var request=new XMLHttpRequest();
-    request.onreadystatechange=function(){
-        if(request.readyState===XMLHttpRequest.DONE){
-            //take some action
-            if(request.status===200){
-                var counter=request.responseText;
-                var span=document.getElementById('count');
-                span.innerHTML=counter.toString();
+function loadArticles(){
+    var btn =document.getElementById('articles-link');
+    // make a request to server
+        var request=new XMLHttpRequest();
+        request.onreadystatechange=function(){
+            if(request.readyState===XMLHttpRequest.DONE){
+                //take some action
+                if(request.status===200){
+                    var artclesData=JSON.parse(request.responseText);
+                    var articles='';
+                    for(let i=0;i<articleData.length;i++){
+                        articles+=`<a href='/articles/${articleData[i].title}'>${articleData[i].title} (${articleData[i].date})</a>`;
+                    }
+                    btn.innerHTML=articles;
+                  } 
+                else if(request.status===404){
+                  btn.innerHTML='no article found';    
+                }
+                else{
+                  btn.innerHTML='something went wrong on server...';   
+                }
             }
-        }
-    };
-    // MAke the Request
-    request.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/counter',true);
-    request.send(null);
-};
-
+        };
+        // MAke the Request
+        request.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/get-articles',true);
+        request.send(null);
+}
 
 var nameInput=document.getElementById('name');
 var submit_btn=document.getElementById('submit-btn');

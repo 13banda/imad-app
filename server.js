@@ -178,18 +178,18 @@ app.get('/logout',function(req,res){
 
 app.get('/comments',function(req,res){
     //make the request to db
-    var article_Title=req.query.article_title;
-    pool.query(`SELECT "users".username,"comments".comment,"comments".timestemp
-                 FROM "comments","users","articles"
-                   WHERE "comments".article_id="articles".id AND "comments".user_id="users".id AND "articles".title=$1' ORDER BY "comments".timestemp DESC;`,[article_Title],function(err,result){
-        if(err){
-            res.status(500).send(err.toString());
-        }
-        else{
-            
-            res.send(JSON.stringify(result.rows));
-        }
-    });
+            var article_Title=req.query.article_title;
+            pool.query(`SELECT "users".username,"comments".comment,"comments".timestemp
+                         FROM "comments","users","articles"
+                           WHERE "comments".article_id="articles".id AND "comments".user_id="users".id AND "articles".title=$1' ORDER BY "comments".timestemp DESC;`,[article_Title],function(err,result){
+                            if(err){
+                                res.status(500).send(err.toString());
+                            }
+                            else{
+                                
+                                res.send(JSON.stringify(result.rows));
+                            }
+            }); 
     //respond with result
   });
 
@@ -201,28 +201,57 @@ app.get('/submit-name',function(req,res){//url something /submit-name?name=xxxx;
 });
 
 app.get('/submit-comment',function(req,res){//url something /submit-name?name=xxxx;
-    var article_Name=req.query.article;
-    var commentText=req.query.comment;
-   pool.query("INSERT INTO comments (article_id, user_id, comment, timestemp) VALUES ($1,$2,$3, now());",[article_Name,req.session.auth.userId,commentText],function(err,result){
-        if(err){
-            res.status(500).send(err.toString());
-        }
-        else{
-            
-            pool.query(`SELECT "users".username,"comments".timestemp,"comments".comment 
-                            FROM "comments","users" 
-                            WHERE "comments".article_id=$1 AND "comments".user_id="users".id`,[req.query.article_id],function(err,results){
+    if(req.session && req.session.auth && req.session.auth.userId){
+      //  res.send(req.session.auth.userId.toString());
+      
+        var article_Title=req.query.article;
+        var commentText=req.query.comment;
+        var user_Id=req.session.auth.userId;
+
+        // get the article id from articles table
+            pool.query(`SELECT id FROM "articles" WHERE title=$1`,[article_Title],function(err,results){
                     if(err){
                         res.status(500).send(err.toString());
                     }
                     else{
-            console.log(results);
-                        res.send(JSON.stringify(results.rows));
+                        
+                        if(result.rows.length===0){
+                            res.status(404).send("Articles not found");
+                         }
+                         else{
+                           var article_Id=results.rows[0].id;
+                            //Insert into the commments table 
+                           pool.query("INSERT INTO comments (article_id, user_id, comment, timestemp) VALUES ($1,$2,$3, now());",[article_id,user_Id,commentText],function(err,result){
+                                if(err){
+                                    res.status(500).send(err.toString());
+                                }
+                                else{
+                                    res.send('submited sucessfully');
+                                }
+                            });
+                         }
                     }
                 });
+          } else{
+        res.send('login for submitting comments...');
+        }
+});
+app.get('/get-articles',function(req,res){
+    //this is the functionality of express framework
+    // when we use colums then it is like a parameter 
+    pool.query('SELECT title,date FROM articles',function(err,result){
+        if(err){
+            res.status(500).send(err.toString());
+        }
+        else{
+            if(result.rows.length===0){
+                res.status(404).send("no article has been found");
+            }
+            else{
+                res.send(JSON.stringify(result.rows);
+            }
         }
     });
-  
 });
 
 app.get('/articles/:articleName',function(req,res){
@@ -243,7 +272,6 @@ app.get('/articles/:articleName',function(req,res){
             }
         }
     });
-    
 });
 
 

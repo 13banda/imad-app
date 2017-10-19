@@ -9,8 +9,8 @@ function loadArticles(){
                     var articleData=JSON.parse(request.responseText);
                     var articles='';
                     for(let i=0;i<articleData.length;i++){
-                        var date=new Date(articleData[i].date).toDateString();
-                        articles+=`<a href='/articles/${articleData[i].title}'>${articleData[i].title} (${date})</a>`;
+                        var date=new Date(articleData[i].date);
+                        articles+=`<a href='/articles/${articleData[i].title}'>${articleData[i].title} (${date.toDateString()})</a>`;
                     }
                     btn.innerHTML=articles;
                   } 

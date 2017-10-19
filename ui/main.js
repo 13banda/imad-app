@@ -94,9 +94,9 @@ function loginFrom(){
                             //take some action
                             if(request.status===200){
                                 // babnner set logout banner
-                                loginSubmit_btn.value='logged'
+                                loginSubmit_btn.value='logged';
                                 alert(userName+' have sucessfully loged');
-                                logoutPanel(username);
+                                logoutPanel(userName);
                             }
                             else if(request.status===403){
                                 alert('username/password is invalid');

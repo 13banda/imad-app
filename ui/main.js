@@ -93,7 +93,6 @@ function loginFrom(){
                         if(request.readyState===XMLHttpRequest.DONE){
                             //take some action
                             if(request.status===200){
-                                // babnner set logout banner
                                 loginSubmit_btn.value='logged';
                                 alert(userName+' have sucessfully loged');
                                 logoutPanel(userName);
@@ -146,7 +145,7 @@ function loginFrom(){
         };
 }
 
-
 loadLogin();
+
 loadArticles();
    

@@ -178,9 +178,10 @@ app.get('/logout',function(req,res){
 
 app.get('/comments',function(req,res){
     //make the request to db
+    var article_Title=req.query.article_title;
     pool.query(`SELECT "users".username,"comments".comment,"comments".timestemp
                  FROM "comments","users","articles"
-                   WHERE "comments".article_id="articles".id AND "comments".user_id="users".id AND "articles".title=$1' ORDER BY "comments".timestemp DESC;`,[req.query.article_title],function(err,result){
+                   WHERE "comments".article_id="articles".id AND "comments".user_id="users".id AND "articles".title=$1' ORDER BY "comments".timestemp DESC;`,[article_Title],function(err,result){
         if(err){
             res.status(500).send(err.toString());
         }

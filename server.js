@@ -208,9 +208,9 @@ app.get('/submit-name',function(req,res){//url something /submit-name?name=xxxx;
     res.send(JSON.stringify(names));
 });
 app.get('/submit-comment',function(req,res){//url something /submit-name?name=xxxx;
-    var article_id=req.query.article_id;
+    var article_Name=req.query.article;
     var commentText=req.query.comment;
-   pool.query("INSERT INTO comments (article_id, user_id, comment, timestemp) VALUES ($1,$2,$3, now());",[article_id,req.session.auth.userId,commentText],function(err,result){
+   pool.query("INSERT INTO comments (article_id, user_id, comment, timestemp) VALUES ($1,$2,$3, now());",[article_Name,req.session.auth.userId,commentText],function(err,result){
         if(err){
             res.status(500).send(err.toString());
         }

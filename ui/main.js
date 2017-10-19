@@ -53,89 +53,95 @@ submit_btn.onclick=function(){
    
 };
 
+function logoutPanel(username){
+    var loginPanel=document.getElementById('login-panel');
+    loginPanel.innerHTML="<a href='/logout' >logout</a> "+username;
+}
 
-
-var loginSubmit_btn=document.getElementById('login-submit-btn');
-loginSubmit_btn.onclick= function (){
-    // make the request to the server and get the name list object
-        var request=new XMLHttpRequest();
-            request.onreadystatechange=function(){
-                if(request.readyState===XMLHttpRequest.DONE){
-                    //take some action
-                    if(request.status===200){
-                        // babnner set logout banner
-                        var loginPanel=document.getElementById('login-panel');
-                        loginPanel.innerHTML="<a href='/logout' >logout</a> "+userName;
-                     alert(userName+' have sucessfully loged');
-                    }
-                    else if(request.status===403){
-                        alert('username/password is invalid');
-                    }
-                    else{
-                        alert('something went wrong!');
-                    }
-                }
-            };
-
-                        // MAke the Request
-            var userName=document.getElementById('username').value;
-            var password=document.getElementById('password').value;
-            request.open('POST','http://wwaheguru9509088985.imad.hasura-app.io/login',true);
-            request.setRequestHeader('Content-Type','application/json');
-            request.send(JSON.stringify({username:userName,password:password}));
-};
-
-var newUser_btn=document.getElementById('new-user-submit-btn');
-newUser_btn.onclick= function (){
-    // make the request to the server and get the name list object
-        var request=new XMLHttpRequest();
-            request.onreadystatechange=function(){
-                if(request.readyState===XMLHttpRequest.DONE){
-                    //take some action
-                    if(request.status===200){
-                        // babnner set logout banner
-                        
-                     alert(userName+' have sucessfully Registred');
-                    newUser_btn.value='Registred';
-                        
-                    }
-                    else{
-                        alert('something went wrong!');
-                        newUser_btn.value='Register';
-                        
-                    }
-                }
-            };
-
-                        // MAke the Request
-            var userName=document.getElementById('username').value;
-            var password=document.getElementById('password').value;
-            request.open('POST','http://wwaheguru9509088985.imad.hasura-app.io/create-user',true);
-            request.setRequestHeader('Content-Type','application/json');
-            request.send(JSON.stringify({username:userName,password:password}));
-            newUser_btn.value='Registering';
-};
-
-
-var request=new XMLHttpRequest();
-request.onreadystatechange=function(){
-    if(request.readyState===XMLHttpRequest.DONE){
-        //take some action
-        if(request.status===200){
-            // babnner set logout banner
-            var username=request.responseText;
-            if(username.length>2){
-            var loginPanel=document.getElementById('login-panel');
-            loginPanel.innerHTML="<a href='/logout' >logout</a> "+username;
+function loadLogin(){
+    var request=new XMLHttpRequest();
+    request.onreadystatechange=function(){
+        if(request.readyState===XMLHttpRequest.DONE){
+            //take some action
+            if(request.status===200){
+                // babnner set logout banner
+                var username=request.responseText;
+                logoutPanel(username);
+            }
+            else{
+                loginFrom();
             }
         }
-        
-    }
-};
+    };
+    
+    // MAke the Request
+    request.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/check-login',true);
+    request.send(null);    
+}
 
-// MAke the Request
-request.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/check-login',true);
-request.send(null);
+function loginFrom(){
+        var loginSubmit_btn=document.getElementById('login-submit-btn');
+        loginSubmit_btn.onclick= function (){
+            // make the request to the server and get the name list object
+                var request=new XMLHttpRequest();
+                    request.onreadystatechange=function(){
+                        if(request.readyState===XMLHttpRequest.DONE){
+                            //take some action
+                            if(request.status===200){
+                                // babnner set logout banner
+                                loginSubmit_btn.value='logged'
+                                alert(userName+' have sucessfully loged');
+                                logoutPanel(username);
+                            }
+                            else if(request.status===403){
+                                alert('username/password is invalid');
+                            }
+                            else{
+                                alert('something went wrong on server!');
+                            }
+                        }
+                    };
         
+                    // MAke the Request
+                    var userName=document.getElementById('username').value;
+                    var password=document.getElementById('password').value;
+                    request.open('POST','http://wwaheguru9509088985.imad.hasura-app.io/login',true);
+                    request.setRequestHeader('Content-Type','application/json');
+                    request.send(JSON.stringify({username:userName,password:password}));
+                    loginSubmit_btn.value='logging';
+        };
+        
+        var newUser_btn=document.getElementById('new-user-submit-btn');
+        newUser_btn.onclick= function (){
+            // make the request to the server and get the name list object
+                var request=new XMLHttpRequest();
+                    request.onreadystatechange=function(){
+                        if(request.readyState===XMLHttpRequest.DONE){
+                            //take some action
+                            if(request.status===200){
+                            newUser_btn.value='Registred';
+                            alert(userName+' have sucessfully Registred');
+                            newUser_btn.value='Registre';
+                            }
+                            else{
+                                alert('something went wrong!');
+                                newUser_btn.value='Register';
+                                
+                            }
+                        }
+                    };
+        
+                    // MAke the Request
+                    var userName=document.getElementById('username').value;
+                    var password=document.getElementById('password').value;
+                    request.open('POST','http://wwaheguru9509088985.imad.hasura-app.io/create-user',true);
+                    request.setRequestHeader('Content-Type','application/json');
+                    request.send(JSON.stringify({username:userName,password:password}));
+                    newUser_btn.value='Registering';
+        };
+}
+
+
+loadLogin();
 loadArticles();
    

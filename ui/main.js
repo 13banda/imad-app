@@ -69,6 +69,9 @@ function loadLogin(){
                 var username=request.responseText;
                 logoutPanel(username);
                 }
+                else{
+                  loginFrom();
+                 }
             }
             else{
                 loginFrom();

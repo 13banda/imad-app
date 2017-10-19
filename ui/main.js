@@ -10,7 +10,7 @@ function loadArticles(){
                     var articles='';
                     for(let i=0;i<articleData.length;i++){
                         var date=new Date(articleData[i].date);
-                        articles+=`<a href='/articles/${articleData[i].title}'>${articleData[i].title} (${date.toDateString()})</a>`;
+                        articles+=`<a href='/articles/${articleData[i].title}'>${articleData[i].title} (${date.toDateString()})</a><br>`;
                     }
                     btn.innerHTML=articles;
                   } 

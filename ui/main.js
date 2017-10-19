@@ -65,8 +65,10 @@ function loadLogin(){
             //take some action
             if(request.status===200){
                 // babnner set logout banner
+                if(request.responseText!=='not login'){
                 var username=request.responseText;
                 logoutPanel(username);
+                }
             }
             else{
                 loginFrom();

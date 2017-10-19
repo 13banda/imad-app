@@ -13,7 +13,7 @@ request.onreadystatechange=function(){
               console.log(comments[0].username);
             var commentBody="";
             for(let i=0;i<comments.length;i++){
-               commentBody+="<p>"+comments[i].comment+"</p><h5>"+comments[i].username+" - "+comments[i].timestemp+"</h5><hr>";
+               commentBody+="<p>"+comments[i].comment+"</p><h5>"+comments[i].username+" - "+Date(comments[i].timestemp).toDateString()+"</h5><hr>";
             }
             commentPanel.innerHTML=""+commentBody;
         }else{

@@ -248,7 +248,7 @@ app.get('/get-articles',function(req,res){
                 res.status(404).send("no article has been found");
             }
             else{
-                res.send(JSON.stringify(result.rows);
+                res.send(JSON.stringify(result.rows));
             }
         }
     });

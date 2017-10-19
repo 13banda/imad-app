@@ -136,5 +136,5 @@ request.onreadystatechange=function(){
 request.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/check-login',true);
 request.send(null);
         
-
+loadArticles();
    

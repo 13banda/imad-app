@@ -69,9 +69,9 @@ function submitComment(){
                                                 }
                                             }
                             };
-                            request.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/submit-comment?article='+article_title+'&comment='+commentText.value,true);
-                            request.send(null);
-                            };
+ request.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/submit-comment?article='+article_title+'&comment='+commentText.value,true);
+request.send(null); 
+};
 }
 
 loadNewCommentArea();

@@ -39,7 +39,7 @@ function loadNewCommentArea(){
                 newcommentPanel.innerHTML=`submit a comment 
                                          <br><textarea id="comment_Area" placeholder="add a comment here..." ></textarea>
                                          <br><input id="submit_comment_btn" type="submit" value="submit">`;
-                
+                             var request=new XMLHttpRequest();
                             var Submit_btn=document.getElementById('submit_comment_btn');
                             var commentText=document.getElementById('comment_Area');
                             Submit_btn.onclick= function (){

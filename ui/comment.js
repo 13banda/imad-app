@@ -24,7 +24,7 @@ function loadComments(){
     };
     // MAke the Request
     commentPanel.innerHTML="comments are loadings...";
-    request.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/comments?article=article_title',true);
+    request.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/comments?article='+article_title,true);
     request.send(null);
 
 }

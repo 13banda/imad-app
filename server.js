@@ -212,12 +212,11 @@ app.get('/submit-comment',function(req,res){//url something /submit-name?name=xx
         var user_Id=req.session.auth.userId;
 
         // get the article id from articles table
-            pool.query(`SELECT id FROM "articles" WHERE title=$1`,[article_Title],function(err,results){
+            pool.query(`SELECT id FROM "articles" WHERE title=$1`,[article_Title],function(err,result){
                     if(err){
                         res.status(500).send(err.toString());
                     }
                     else{
-                        
                         if(result.rows.length===0){
                             res.status(404).send("Articles not found");
                          }

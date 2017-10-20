@@ -39,7 +39,19 @@ function loadNewCommentArea(){
                 newcommentPanel.innerHTML=`submit a comment 
                                          <br><textarea id="comment_Area" placeholder="add a comment here..." ></textarea>
                                          <br><input id="submit_comment_btn" type="submit" value="submit">`;
-                           
+                            submitComment();
+               }else{newcommentPanel.innerHTML="";}
+            }else{
+                newcommentPanel.innerHTML="";
+            }
+        }
+    };
+    // Make the Request
+    request.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/check-login',true);
+    request.send(null);
+}
+function submitComment(){
+    var request=new XMLHttpRequest();
                             var Submit_btn=document.getElementById('submit_comment_btn');
                             var commentText=document.getElementById('comment_Area');
                             Submit_btn.onclick= function (){
@@ -60,15 +72,6 @@ function loadNewCommentArea(){
                             request.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/submit-comment?article='+article_title+'&comment='+commentText.value,true);
                             request.send(null);
                             };
-               }else{newcommentPanel.innerHTML="";}
-            }else{
-                newcommentPanel.innerHTML="";
-            }
-        }
-    };
-    // Make the Request
-    request.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/check-login',true);
-    request.send(null);
 }
 
 loadNewCommentArea();

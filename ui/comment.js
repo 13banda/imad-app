@@ -8,15 +8,19 @@ function loadComments(){
             //take some action
             if(request.status===200){
                 var comments=request.responseText;
+                if(comments!=='0 commment'){
                 comments=JSON.parse(comments);
                 var commentBody="";
-                commentPanel.innerHTML=""+commentBody;
                 for(let i=0;i<comments.length;i++){
                     var date=new Date(comments[i].timestemp);
                     var time=date.toLocaleTimeString();
                    commentBody+=comments[i].comment+"<div style='textSize='10px'>"+comments[i].username+" at "+time+' on '+date.toLocaleDateString()+"</div><hr>";
                 }
                 commentPanel.innerHTML=""+commentBody;
+                }
+                else{
+                    commentPanel.innerHTML=comments;
+                }
             }else{
                 commentPanel.innerHTML="something went worng!";
             }

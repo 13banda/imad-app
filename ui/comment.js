@@ -12,7 +12,8 @@ function loadComments(){
                 var commentBody="";
                 for(let i=0;i<comments.length;i++){
                     var date=new Date(comments[i].timestemp);
-                   commentBody+=comments[i].comment+"<div>"+comments[i].username+" - "+date.toDateString()+"</div><hr>";
+                    var time=date.toLocaleTimeString();
+                   commentBody+=comments[i].comment+"<div>"+comments[i].username+" - "+date.toLocaleDateString()+"</div><hr>";
                 }
                 commentPanel.innerHTML=""+commentBody;
             }else{
@@ -24,9 +25,7 @@ function loadComments(){
     commentPanel.innerHTML="comments are loadings...";
     request.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/comments?article='+article_title,true);
     request.send(null);
-
 }
-loadComments();
 
 var request_1=new XMLHttpRequest();
 var newcommentPanel=document.getElementById("add_comment");
@@ -52,5 +51,8 @@ request_1.onreadystatechange=function(){
 // MAke the Request
 request_1.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/add-new-comment-panel',true);
 request_1.send(null);
+
+
+loadComments();
 
 

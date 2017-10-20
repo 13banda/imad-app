@@ -13,7 +13,7 @@ function loadComments(){
                 for(let i=0;i<comments.length;i++){
                     var date=new Date(comments[i].timestemp);
                     var time=date.toLocaleTimeString();
-                   commentBody+=comments[i].comment+"<div>"+comments[i].username+" at "+time+' on '+date.toLocaleDateString()+"</div><hr>";
+                   commentBody+=comments[i].comment+"<div style='textSize='10px'>"+comments[i].username+" at "+time+' on '+date.toLocaleDateString()+"</div><hr>";
                 }
                 commentPanel.innerHTML=""+commentBody;
             }else{

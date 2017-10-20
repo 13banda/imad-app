@@ -8,13 +8,11 @@ function loadComments(){
             //take some action
             if(request.status===200){
                 var comments=request.responseText;
-               
                 comments=JSON.parse(comments);
-                 console.log(comments);
-                  console.log(comments[0].username);
                 var commentBody="";
                 for(let i=0;i<comments.length;i++){
-                   commentBody+="<p>"+comments[i].comment+"</p><h5>"+comments[i].username+" - "+Date(comments[i].timestemp).toDateString()+"</h5><hr>";
+                    var date=Date(comments[i].timestemp);
+                   commentBody+="<p>"+comments[i].comment+"</p><h5>"+comments[i].username+" - "+date.toDateString()+"</h5><hr>";
                 }
                 commentPanel.innerHTML=""+commentBody;
             }else{

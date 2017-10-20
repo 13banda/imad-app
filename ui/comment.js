@@ -28,6 +28,7 @@ function loadComments(){
     request.send(null);
 
 }
+loadComments();
 
 var request_1=new XMLHttpRequest();
 var newcommentPanel=document.getElementById("add_comment");

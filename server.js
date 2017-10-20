@@ -187,7 +187,7 @@ app.get('/comments',function(req,res){
                                 }
                                 else{
                                         if(result.rows.length===0){
-                                           res.send('0 commment/article not found');  
+                                           res.send('0 commment');  
                                         }else{
                                            res.send(JSON.stringify(result.rows));
                                         }

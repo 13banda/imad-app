@@ -11,7 +11,7 @@ function loadComments(){
                 comments=JSON.parse(comments);
                 var commentBody="";
                 for(let i=0;i<comments.length;i++){
-                    var date=Date(comments[i].timestemp);
+                    var date=new Date(comments[i].timestemp);
                    commentBody+="<p>"+comments[i].comment+"</p><h5>"+comments[i].username+" - "+date.toDateString()+"</h5><hr>";
                 }
                 commentPanel.innerHTML=""+commentBody;

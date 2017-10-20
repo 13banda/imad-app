@@ -22,11 +22,12 @@ function loadComments(){
             }
         }
     };
+    // MAke the Request
+    commentPanel.innerHTML="comments are loadings...";
+    request.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/comments?article=article_title',true);
+    request.send(null);
+
 }
-// MAke the Request
-commentPanel.innerHTML="comments are loadings...";
-request.open('GET','http://wwaheguru9509088985.imad.hasura-app.io/comments?article=article_title',true);
-request.send(null);
 
 var request_1=new XMLHttpRequest();
 var newcommentPanel=document.getElementById("add_comment");

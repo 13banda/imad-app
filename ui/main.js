@@ -98,9 +98,11 @@ function loginFrom(){
                                 logoutPanel(userName);
                             }
                             else if(request.status===403){
+                                loginSubmit_btn.value='login';
                                 alert('username/password is invalid');
                             }
                             else{
+                                loginSubmit_btn.value='login';
                                 alert('something went wrong on server!');
                             }
                         }

@@ -12,7 +12,7 @@ function loadComments(){
                 var commentBody="";
                 for(let i=0;i<comments.length;i++){
                     var date=new Date(comments[i].timestemp);
-                   commentBody+="<p>"+comments[i].comment+"</p><div>"+comments[i].username+" - "+date.toDateString()+"</div><hr>";
+                   commentBody+=comments[i].comment+"<div>"+comments[i].username+" - "+date.toDateString()+"</div><hr>";
                 }
                 commentPanel.innerHTML=""+commentBody;
             }else{

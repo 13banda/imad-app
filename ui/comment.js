@@ -10,6 +10,7 @@ function loadComments(){
                 var comments=request.responseText;
                 comments=JSON.parse(comments);
                 var commentBody="";
+                commentPanel.innerHTML=""+commentBody;
                 for(let i=0;i<comments.length;i++){
                     var date=new Date(comments[i].timestemp);
                     var time=date.toLocaleTimeString();

@@ -221,7 +221,7 @@ app.get('/submit-comment',function(req,res){//url something /submit-name?name=xx
                             res.status(404).send("Articles not found");
                          }
                          else{
-                           var article_Id=results.rows[0].id;
+                           var article_Id=result.rows[0].id;
                             //Insert into the commments table 
                            pool.query("INSERT INTO comments (article_id, user_id, comment, timestemp) VALUES ($1,$2,$3, now());",[article_id,user_Id,commentText],function(err,result){
                                 if(err){

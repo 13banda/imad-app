@@ -22,7 +22,7 @@ app.use(morgan('combined'));
 app.use(bodyParser.json());
 
 var helmet = require('helmet');
-app.use(helmet());
+app.use(helmet);
 app.use(session({
     secret: 'thisisthesecretrandomvalues',
     cookie: {

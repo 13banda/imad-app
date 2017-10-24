@@ -6,6 +6,7 @@ var Pool = require('pg').Pool;// for creating the pool for db crandential
 var crypto = require('crypto');//for hashing the password
 var bodyParser= require('body-parser');// for extracting JSON from content body
 var session= require('express-session');// this the session lib.
+var helmet = require('helmet');// see https://expressjs.com/en/advanced/best-practice-security.html
 
 // db crandential
 var config ={
@@ -19,10 +20,14 @@ var config ={
 var app = express();
 app.use(morgan('combined'));
 app.use(bodyParser.json());
-
+app.use(helmet());
 app.use(session({
     secret: 'thisisthesecretrandomvalues',
-    cookie: {maxAge:1000 * 60 * 60 * 24 * 30}
+    cookie: {
+            secure: true,
+            httpOnly: true,
+            maxAge:1000 * 60 * 60 * 24 * 30
+         }
 }));
 
 var pool = new Pool(config);

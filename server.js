@@ -22,7 +22,7 @@ var app = express();
 app.use(morgan('combined'));
 app.use(bodyParser.json());
 //app.use(compression());
-app.disable('x-powered-by');//atacke not find that app runing on express.js
+//app.disable('x-powered-by');//atacke not find that app runing on express.js
 //var helmet = require('helmet');app.use(helmet());
 app.use(session({
     secret: 'thisisthesecretrandomvalues',

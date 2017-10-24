@@ -6,7 +6,7 @@ var Pool = require('pg').Pool;// for creating the pool for db crandential
 var crypto = require('crypto');//for hashing the password
 var bodyParser= require('body-parser');// for extracting JSON from content body
 var session= require('express-session');// this the session lib.
-var helmet = require('tls');// see https://expressjs.com/en/advanced/best-practice-security.html
+// helmet = require('tls');// see https://expressjs.com/en/advanced/best-practice-security.html
 var compression = require('compression');
 
 // db crandential

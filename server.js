@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 app.use(session({
     secret: 'thisisthesecretrandomvalues',
     cookie: {
-            //secure: true,
+            //secure: true,this is only on https connection
             httpOnly: true,
             maxAge:1000 * 60 * 60 * 24 * 30
          }

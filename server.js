@@ -175,6 +175,10 @@ app.get('/check-login',function(req,res){
     }
 });
 
+app.get('/ip',function(req,res){
+       var r = req.ip;
+    res.send("<a href='/'>Home</a>you are logout sucessfully..."+ r);
+});
 app.get('/logout',function(req,res){
     delete req.session.auth;
     res.send("<a href='/'>Home</a>you are logout sucessfully...");
